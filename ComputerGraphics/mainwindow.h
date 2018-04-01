@@ -1,18 +1,23 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-//#include <QMainWindow>
-#include <QGLWidget>
-#include <QtOpenGL>
-#include <QTimer>
+#include <QMainWindow>
 
-class MainWindow : public QGLWidget
+namespace Ui
+{
+    class MainWindow;
+}
+
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+private:
+    Ui::MainWindow *ui;
 };
 
 #endif // MAINWINDOW_H
