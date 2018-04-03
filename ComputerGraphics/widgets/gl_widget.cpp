@@ -4,10 +4,7 @@ GL_Widget::GL_Widget(QWidget *parent):
     QGLWidget(parent)
 {
     m_primitiveIndex=0;
-    //setGeometry(20, 20, 550, 500);
-
     int pointsCount = 10;
-
     double floor = -1;
     double up = 1;
 
@@ -19,7 +16,6 @@ GL_Widget::GL_Widget(QWidget *parent):
         tmp.z = (double) (rand()) / RAND_MAX * (up - floor) + floor;
         m_points.push_back(tmp);
     }
-
 }
 
 void GL_Widget::initializeGL(){
@@ -210,6 +206,8 @@ void GL_Widget::figuresGL(){
 }
 
 void GL_Widget::startDrawing(){
+
+    glViewport(0, 0, this->width(), this->height());
     figuresGL();
 }
 
