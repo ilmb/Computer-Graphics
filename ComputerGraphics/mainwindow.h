@@ -2,10 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDebug>
 
-namespace Ui
-{
-    class MainWindow;
+enum tests {NONE, ALPHA_TEST, BLEND_TEST, SCISSOR_TEST, ALL_TEST};
+
+namespace Ui {
+class MainWindow;
 }
 
 class MainWindow : public QMainWindow
@@ -18,6 +20,19 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+protected slots:
+    void activateAlphaTest();
+    void activateBlendTest();
+    void activateScissorTest();
+    void activateTest(int index);
+
+    void setOpacityValue(int value);
+    void setScissorXValue(int value);
+    void setScissorYValue(int value);
+    void setScissorWValue(int value);
+    void setScissorHValue(int value);
+private slots:
 };
 
 #endif // MAINWINDOW_H
