@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>810</width>
-    <height>563</height>
+    <height>588</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Лабораторная работа 2</string>
+   <string>Лабораторная работа 3</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -40,183 +40,20 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="5" column="0">
-        <widget class="QComboBox" name="opacityTestComboBox"/>
-       </item>
-       <item row="1" column="0" colspan="2">
-        <widget class="QComboBox" name="typesComboBox"/>
-       </item>
-       <item row="16" column="0" colspan="2">
-        <widget class="QSlider" name="scissorTestYHorizontalSlider">
-         <property name="maximum">
-          <number>550</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="18" column="1">
-        <widget class="QLCDNumber" name="scissorTestWLcdNumber">
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="segmentStyle">
-          <enum>QLCDNumber::Flat</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0" colspan="2">
-        <widget class="QComboBox" name="blendTest2ComboBox"/>
-       </item>
-       <item row="21" column="1">
-        <widget class="QLCDNumber" name="scissorTestHLcdNumber">
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="segmentStyle">
-          <enum>QLCDNumber::Flat</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QLCDNumber" name="opacityLcdNumber">
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="smallDecimalPoint">
-          <bool>false</bool>
-         </property>
-         <property name="segmentStyle">
-          <enum>QLCDNumber::Flat</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="0" colspan="2">
-        <widget class="QSlider" name="scissorTestHHorizontalSlider">
-         <property name="minimum">
-          <number>0</number>
-         </property>
-         <property name="maximum">
-          <number>500</number>
-         </property>
-         <property name="value">
-          <number>100</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="alphaTestLabel">
-         <property name="text">
-          <string>Тест прозрачности</string>
-         </property>
-        </widget>
-       </item>
-       <item row="21" column="0">
-        <widget class="QLabel" name="scissorTestHeightLabel">
-         <property name="text">
-          <string>Высота области просмотра</string>
-         </property>
-        </widget>
-       </item>
-       <item row="11" column="0">
-        <widget class="QLabel" name="scissorTestXLabel">
-         <property name="text">
-          <string>X</string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="1">
-        <widget class="QLCDNumber" name="scissorTestYLcdNumber">
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="segmentStyle">
-          <enum>QLCDNumber::Flat</enum>
-         </property>
-        </widget>
-       </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>Lab2</string>
+          <string>Введите количество слоев</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="2">
-        <widget class="QSlider" name="alphaTestHorizontalSlider">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
+       <item row="3" column="0">
+        <widget class="QLineEdit" name="countLineEdit"/>
        </item>
-       <item row="11" column="1">
-        <widget class="QLCDNumber" name="scissorTestXLcdNumber">
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="segmentStyle">
-          <enum>QLCDNumber::Flat</enum>
-         </property>
-        </widget>
+       <item row="1" column="0">
+        <widget class="QLineEdit" name="radiusLineEdit"/>
        </item>
-       <item row="14" column="0">
-        <widget class="QLabel" name="scissorTestYLabel">
-         <property name="text">
-          <string>Y</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0" colspan="2">
-        <widget class="QLabel" name="blendTestLabel">
-         <property name="text">
-          <string>Тест смешивания</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0" colspan="2">
-        <widget class="QComboBox" name="blendTest1ComboBox"/>
-       </item>
-       <item row="13" column="0" colspan="2">
-        <widget class="QSlider" name="scissorTestXHorizontalSlider">
-         <property name="maximum">
-          <number>550</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QComboBox" name="filterComboBox"/>
-       </item>
-       <item row="10" column="0" colspan="2">
-        <widget class="QLabel" name="scissorTestLabel">
-         <property name="text">
-          <string>Тест отсечения</string>
-         </property>
-        </widget>
-       </item>
-       <item row="20" column="0" colspan="2">
-        <widget class="QSlider" name="scissorTestWHorizontalSlider">
-         <property name="minimum">
-          <number>0</number>
-         </property>
-         <property name="maximum">
-          <number>500</number>
-         </property>
-         <property name="value">
-          <number>100</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="17" column="0">
+       <item row="5" column="0" rowspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -229,17 +66,10 @@
          </property>
         </spacer>
        </item>
-       <item row="18" column="0">
-        <widget class="QLabel" name="scissorTestWidthLabel">
-         <property name="text">
-          <string>Ширина области просмотра</string>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Lab1</string>
+          <string>Введите радиус</string>
          </property>
         </widget>
        </item>
