@@ -22,8 +22,8 @@ private:
 protected slots:
 
 private slots:
-    void on_radiusLineEdit_returnPressed();
-    void on_countLineEdit_returnPressed();
+    void on_checkBox_clicked();
+    void on_pushButton_clicked();
 };
 
 #endif // MAINWINDOW_H

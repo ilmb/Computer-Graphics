@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Лабораторная работа 3</string>
+   <string>Лабораторная работа 4</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -40,20 +40,14 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_2">
+       <item row="3" column="0">
+        <widget class="QPushButton" name="pushButton">
          <property name="text">
-          <string>Введите количество слоев</string>
+          <string>Применить</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QLineEdit" name="countLineEdit"/>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLineEdit" name="radiusLineEdit"/>
-       </item>
-       <item row="5" column="0" rowspan="2">
+       <item row="4" column="0" rowspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -66,10 +60,20 @@
          </property>
         </spacer>
        </item>
+       <item row="1" column="0">
+        <widget class="QLineEdit" name="lineEdit"/>
+       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Введите радиус</string>
+          <string>Введите число точек</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="checkBox">
+         <property name="text">
+          <string>Отладка</string>
          </property>
         </widget>
        </item>

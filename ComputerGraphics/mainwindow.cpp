@@ -6,8 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->radiusLineEdit->setText(QString::number(ui->fieldGLWidget->radius()));
-    ui->countLineEdit->setText(QString::number(ui->fieldGLWidget->count()));
+    ui->lineEdit->setText(QString::number(ui->fieldGLWidget->getCurvePointCount()));
+    ui->checkBox->setChecked(ui->fieldGLWidget->getDebugMode());
 }
 
 MainWindow::~MainWindow()
@@ -15,12 +15,28 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_radiusLineEdit_returnPressed()
+void MainWindow::on_checkBox_clicked()
 {
-    ui->fieldGLWidget->setRadius(ui->radiusLineEdit->text().toInt());
+    ui->fieldGLWidget->setDebugMode(ui->checkBox->isChecked());
 }
 
-void MainWindow::on_countLineEdit_returnPressed()
+void MainWindow::on_pushButton_clicked()
 {
-    ui->fieldGLWidget->setCount(ui->countLineEdit->text().toInt());
+    int currentPointCount = ui->fieldGLWidget->getCurvePointCount();
+
+    QString pointsCount = ui->lineEdit->text();
+    bool ok = true;
+    double value = pointsCount.toUInt(&ok);
+
+    if(ok)
+    {
+        if(value != currentPointCount)
+        {
+            ui->fieldGLWidget->setCurvePointCount(value);
+        }
+    }
+    else
+    {
+        ui->lineEdit->setText(QString::number(currentPointCount));
+    }
 }
