@@ -139,7 +139,7 @@ void GL_Widget::drawPoint(Point2Df point, int index)
 {
     glPointSize(5);
     glBegin(GL_POINTS);
-    glColor3f(1.0, 0.0, 0.0);
+    glColor3f(1.0, 0.0, 1.0);
     glVertex2f(point.m_x, point.m_y);
     glEnd();
     glFlush();
@@ -160,7 +160,7 @@ void GL_Widget::drawCurve()
             drawLine(m_points[i], m_points[i+1]);
         }
 
-        glColor3f(0.2, 1.0, 0.0);
+        glColor3f(0.0, 0.0, 0.0);
         glLineWidth(5);
 
         Point2Df p1 = m_points[0];
