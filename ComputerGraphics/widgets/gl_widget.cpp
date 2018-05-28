@@ -37,7 +37,7 @@ void GL_Widget::paintGL(){
     drawCurve();
 }
 
-/*void GL_Widget::mouseMoveEvent(QMouseEvent *mouseEvent)
+void GL_Widget::mouseMoveEvent(QMouseEvent *mouseEvent)
 {
     double dx = (double) (mouseEvent->x() - m_mousePositionX) / (10 * (this->width() / 2));
     double dy = (double) (mouseEvent->y() - m_mousePositionY) / (10 * (this->height() / 2));
@@ -47,17 +47,17 @@ void GL_Widget::paintGL(){
         m_points[m_debugPointIndex].m_x += dx;
         m_points[m_debugPointIndex].m_y -= dy;
     }
-//    if(m_debugMode)
-//    {
-//        if(m_debugPointIndex > 0 && m_debugPointIndex < m_points.size())
-//        {
-//            m_points[m_debugPointIndex].m_x += dx;
-//            m_points[m_debugPointIndex].m_y -= dy;
-//        }
-//    }
+    if(m_debugMode)
+    {
+        if(m_debugPointIndex > 0 && m_debugPointIndex < m_points.size())
+        {
+            m_points[m_debugPointIndex].m_x += dx;
+            m_points[m_debugPointIndex].m_y -= dy;
+        }
+    }
 
     updateGL();
-}*/
+}
 
 void GL_Widget::mousePressEvent(QMouseEvent *mouseEvent)
 {
@@ -91,8 +91,8 @@ void GL_Widget::mousePressEvent(QMouseEvent *mouseEvent)
 
         for(int i = 0; i < m_points.size(); i++)
         {
-            double currentDeltaX = abs(m_points[i].m_x - x);
-            double currentDeltaY = abs(m_points[i].m_y - y);
+            double currentDeltaX = fabs(m_points[i].m_x - x);
+            double currentDeltaY = fabs(m_points[i].m_y - y);
             if(currentDeltaX < deltaX && currentDeltaY < deltaY)
             {
                 deltaX = currentDeltaX;
@@ -101,6 +101,7 @@ void GL_Widget::mousePressEvent(QMouseEvent *mouseEvent)
             }
         }
     }
+
 
     updateGL();
 }

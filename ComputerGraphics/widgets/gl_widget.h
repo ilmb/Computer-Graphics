@@ -56,7 +56,7 @@ public:
     void setDebugMode(bool debugMode);
 
 public slots:
-    //void mouseMoveEvent(QMouseEvent *mouseEvent);
+    void mouseMoveEvent(QMouseEvent *mouseEvent);
 
     void mousePressEvent(QMouseEvent *mouseEvent);
 
