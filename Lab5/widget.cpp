@@ -64,7 +64,7 @@ void Widget::initializeGL()
     program->setUniformValue("mvp", mvpMatrix);
 
     //set light parameters
-    torchPosition = new QVector3D(1, 0.8, -1.2);
+    torchPosition = new QVector3D(0.6, 0.8, -1.2);
     torchFirstColor = new QVector4D(1, 1, 1, 1);        //white
     torchSecondColor = new QVector4D(0, 1, 1, 1);       //blue
 

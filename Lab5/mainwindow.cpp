@@ -46,6 +46,7 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
                                             glwidget->torchPosition->y(), glwidget->torchPosition->z());
     glwidget->program->setUniformValue("torch_position", *(glwidget->torchPosition));
     glwidget->update();
+    ui->lcdNumber->display(glwidget->torchPosition->x());
 }
 
 void MainWindow::on_horizontalSlider_2_valueChanged(int value)
@@ -54,6 +55,7 @@ void MainWindow::on_horizontalSlider_2_valueChanged(int value)
                                             (float)3 * value / 100 - 1, glwidget->torchPosition->z());
     glwidget->program->setUniformValue("torch_position", *(glwidget->torchPosition));
     glwidget->update();
+    ui->lcdNumber_2->display(glwidget->torchPosition->y());
 }
 
 void MainWindow::on_horizontalSlider_3_valueChanged(int value)
@@ -62,4 +64,5 @@ void MainWindow::on_horizontalSlider_3_valueChanged(int value)
                                             glwidget->torchPosition->y(), (float) -2 * value / 100 - 0.5);
     glwidget->program->setUniformValue("torch_position", *(glwidget->torchPosition));
     glwidget->update();
+    ui->lcdNumber_3->display(glwidget->torchPosition->z());
 }
