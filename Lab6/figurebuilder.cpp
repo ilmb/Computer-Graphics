@@ -161,6 +161,149 @@ SimpleObject3D *FigureBuilder::initDiskSector(QVector3D point, double r, double 
     return new SimpleObject3D(vertexes, indexes, QImage(":/2.jpg"));
 }
 
+SimpleObject3D *FigureBuilder::initDiskStrip(QVector3D point, double r, double angle, double step, bool invert)
+{
+    double r2 = 0.8;
+    double zNormal = 1.0;
+    if(invert)
+    {
+        zNormal = -1.0;
+    }
+
+    QVector<VertexData> disk1Vertexes;
+    QVector<QVector3D> disk1Indexes;
+    VertexData center = VertexData(point,
+                                   QVector2D(0.0, 0.0),
+                                   QVector3D(0.0, 0.0, zNormal));
+    disk1Vertexes.push_back(center);
+    QList<QVector3D> disk1Points;
+    for(float i = 0; i <= angle + step; i += step)
+    {
+        disk1Points.push_back(QVector3D(center.position.x() + sin(i) * r, center.position.y() + cos(i) * r, center.position.z()));
+        disk1Indexes.push_back(QVector3D(sin(i), cos(i), zNormal));
+    }
+
+    QVector<VertexData> disk2Vertexes;
+    QVector<QVector3D> disk2Indexes;
+    disk2Vertexes.push_back(center);
+    QList<QVector3D> disk2Points;
+    for(float i = 0; i <= angle + step; i += step)
+    {
+        disk2Points.push_back(QVector3D(center.position.x() + sin(i) * r2, center.position.y() + cos(i) * r2, center.position.z()));
+        disk2Indexes.push_back(QVector3D(sin(i), cos(i), zNormal));
+    }
+
+    for(int i = 0; i < disk1Points.size(); i += 1)
+    {
+        QVector2D texture;
+        if(i % 2 == 0)
+        {
+            texture.setX(1.0);
+            texture.setY(0.0);
+        }
+        else
+        {
+            texture.setX(0.0);
+            texture.setY(1.0);
+        }
+        disk1Vertexes.push_back(VertexData(QVector3D(disk1Points[i].x(), disk1Points[i].y(), disk1Points[i].z()),
+                                      texture,
+                                      disk1Indexes[i]));
+    }
+
+    for(int i = 0; i < disk2Points.size(); i += 1)
+    {
+        QVector2D texture;
+        if(i % 2 == 0)
+        {
+            texture.setX(1.0);
+            texture.setY(0.0);
+        }
+        else
+        {
+            texture.setX(0.0);
+            texture.setY(1.0);
+        }
+
+        disk2Vertexes.push_back(VertexData(QVector3D(disk2Points[i].x(), disk2Points[i].y(), disk2Points[i].z()),
+                                      texture,
+                                      disk2Indexes[i]));
+    }
+
+
+  //  int disk2FirstIndex = disk1Points.size();
+    /*for(int i = 0; i < disk1Points.size() - 1; i++)
+    {
+        disk1Indexes.push_back(i);
+        indexes.push_back(i + 1);
+        indexes.push_back(disk2FirstIndex + i + 1);
+    }*/
+
+    for(int i = 0; i < disk1Points.size() - 1; i++)
+    {
+        for(int j = 0; j < disk2Points.size() - 1; j++)
+        {
+            disk1Indexes[i];
+            disk1Indexes[i + 1];
+            disk2Indexes[j];
+        }
+    }
+    /*
+    disk1Indexes.push_back(disk1Points.size() - 1);
+    disk1Indexes.push_back(0);
+    disk2Indexes.push_back(j);
+
+    for(int i = 0; i < disk1Points.size() - 1; i++)
+    {
+        indexes.push_back(i);
+        indexes.push_back(disk2FirstIndex + i + 1);
+        indexes.push_back(disk2FirstIndex + i);
+    }
+
+    indexes.push_back(disk1Points.size() - 1);
+    indexes.push_back(disk2FirstIndex + 0);
+    indexes.push_back(disk2FirstIndex + disk2Points.size() - 1);
+
+
+
+
+    for(int i = 1; i < disk1Points.size(); i++)
+    {
+        vertexes.push_back(VertexData(QVector3D(disk1Points[i].x() - disk2Points[i].x(), disk1Points[i].y(), disk1Points[i].z()),
+                                      QVector2D(1.0, 1.0),
+                                      QVector3D(0.0, 0.0, zNormal)));
+        vertexes.push_back(VertexData(QVector3D(disk1Points[i-1].x() - disk2Points[i].x(), disk2Points[i-1].y(), disk2Points[i - 1].z()),
+                                      QVector2D(1.0, 1.0),
+                                      QVector3D(0.0, 0.0, zNormal)));
+    }
+
+    int count = vertexes.size();
+    for(int i = 0; i < count - 1; i += 2)
+    {
+        if(!invert)
+        {
+            indexes.push_back(0);
+            indexes.push_back(i + 1);
+            indexes.push_back(i + 2);
+        }
+        else
+        {
+            indexes.push_back(0);
+            indexes.push_back(i + 2);
+            indexes.push_back(i + 1);
+        }
+
+    }
+*/
+    /*for(int i = 0 ; i < vertexes.size(); i++)
+    {
+        qDebug() << "#" << i << vertexes[i].position << vertexes[i].texCoords << vertexes[i].normal;
+    }*/
+    //qDebug() << indexes;
+
+    //return new SimpleObject3D(disk1Vertexes, disk2Indexes, QImage(":/2.jpg"));
+}
+
 SimpleObject3D *FigureBuilder::initBelt(QVector3D center1, QVector3D center2, double r1, double r2, double step)
 {
 
@@ -284,7 +427,7 @@ double FigureBuilder::calculteLemniscatePoint(double x, double c)
     return 0.05f + sqrt(sqrt(pow(c, 4) + 4 * pow(x, 2) * pow(c, 2)) - pow(x, 2) - pow(c, 2));
 }
 
-SimpleObject3D *FigureBuilder::initBarrel(QVector3D center1, QVector3D center2, double r1, double r2, double step)
+SimpleObject3D *FigureBuilder::initCylinder(QVector3D center1, QVector3D center2, double r1, double r2, double step)
 {
     double zNormal;
     double delta = r2 - r1;
@@ -377,10 +520,6 @@ SimpleObject3D *FigureBuilder::initBarrel(QVector3D center1, QVector3D center2, 
         indexes.push_back(disk2FirstIndex + i + 1);
     }
 
-    indexes.push_back(disk1Points.size() - 1);
-    indexes.push_back(0);
-    indexes.push_back(disk2FirstIndex + 0);
-
     for(int i = 0; i < disk1Points.size() - 1; i++)
     {
         indexes.push_back(i);
@@ -388,9 +527,6 @@ SimpleObject3D *FigureBuilder::initBarrel(QVector3D center1, QVector3D center2, 
         indexes.push_back(disk2FirstIndex + i);
     }
 
-    indexes.push_back(disk1Points.size() - 1);
-    indexes.push_back(disk2FirstIndex + 0);
-    indexes.push_back(disk2FirstIndex + disk2Points.size() - 1);
 
     /*for(int i = 0 ; i < vertexes.size(); i++)
     {

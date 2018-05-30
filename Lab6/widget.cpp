@@ -350,7 +350,6 @@ void Widget::initSandGlass2(double lowerBound, double upperBound, double c, doub
         QVector3D center1 = QVector3D(0.0, 0.0, curvePoints[i].z());
         QVector3D center2 = QVector3D(0.0, 0.0, curvePoints[i + 1].z());
         m_groups.last()->addObject(FigureBuilder::initBelt(center2, center1, r2, r1));
-        //m_groups.last()->addObject(FigureBuilder::initBarrel(center2, center1, r2, r1));
     }
 
     double r = curvePoints.first().x();
@@ -383,17 +382,30 @@ void Widget::initBarrel(double lowerBound, double upperBound, double delta)
 
         QVector3D center1 = QVector3D(0.0, 0.0, curvePoints[i].z());
         QVector3D center2 = QVector3D(0.0, 0.0, curvePoints[i + 1].z());
-        m_groups.last()->addObject(FigureBuilder::initBelt(center2, center1, r2, r1));
-        //m_groups.last()->addObject(FigureBuilder::initBarrel(center2, center1, r2, r1));
+        m_groups.last()->addObject(FigureBuilder::initCylinder(center2, center1, r2, r1));
     }
 
-    double r = curvePoints.first().x();
-    QVector3D center = QVector3D(0.0, 0.0, curvePoints.first().z());
+    double r = curvePoints.first().x() - 0.2;
+    QVector3D center = QVector3D(0.0, 0.0, curvePoints.first().z() + 0.2);
     m_groups.last()->addObject(FigureBuilder::initDiskSector(center, r, 2 * M_PI, 0.1, true));
 
-    r = curvePoints.last().x();
-    center = QVector3D(0.0, 0.0, curvePoints.last().z());
+   /* center = QVector3D(0.0, 0.0, curvePoints.first().z());
+    m_groups.last()->addObject(FigureBuilder::initDiskStrip(center, r, 2 * M_PI, 0.1, false));
+*/
+    r = curvePoints.last().x() - 0.2;
+    center = QVector3D(0.0, 0.0, curvePoints.last().z() - 0.2);
     m_groups.last()->addObject(FigureBuilder::initDiskSector(center, r, 2 * M_PI, 0.1, false));
+
+    for(int i = 0; i < curvePoints.size() - 1; i++)
+    {
+        double r1 = curvePoints[i].x() -0.2;
+        double r2 = curvePoints[i + 1].x() - 0.2;
+
+        QVector3D center1 = QVector3D(0.0, 0.0, curvePoints[i].z());
+        QVector3D center2 = QVector3D(0.0, 0.0, curvePoints[i + 1].z());
+        m_groups.last()->addObject(FigureBuilder::initCylinder(center2, center1, r2, r1));
+    }
+
 
     m_transformObjects.append(m_groups.last());
 }
