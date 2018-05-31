@@ -42,7 +42,7 @@ protected:
     void initSandGlass();
     void initWoodenWheel();
     void initSandGlass2(double lowerBound = -1.0, double upperBound = 1.0, double c = 1.0, double delta = 0.1);
-    void initBarrel(double lowerBound = -1.0, double upperBound = 1.0, double delta = 0.1);
+    void initBarrel(double leftOffset, double delta);
 private:
     // матрица проекции
     QMatrix4x4 m_projectionMatrix;

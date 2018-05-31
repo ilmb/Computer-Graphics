@@ -14,6 +14,7 @@ public:
     static SimpleObject3D *initBelt(QVector3D center1, QVector3D center2, double r1, double r2, double step = 0.1);
     static double calculteLemniscatePoint(double x, double c);
     static SimpleObject3D *initCylinder(QVector3D center1, QVector3D center2, double r1, double r2, double step = 0.1);
+    static SimpleObject3D *initCylinderN(QVector3D center1, QVector3D center2, double r1, double r2, double step = 0.1);
 };
 
 #endif // FIGUREBUILDER_H
