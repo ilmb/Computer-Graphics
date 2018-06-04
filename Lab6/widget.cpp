@@ -106,7 +106,16 @@ void Widget::initializeGL()
 
     //m_transformObjects.append(QSharedPointer<Transformational>(FigureBuilder::initCube(QImage(":123.jpg"), 2)));
     initBarrel(-0.5, precision);
-
+    m_groups.last()->translate(QVector3D(0.0, 0.0, 2.0));
+    initBarrel(-0.5, precision);
+    m_groups.last()->translate(QVector3D(-1.0, -0.9, 0.0));
+    initBarrel(-0.5, precision);
+    m_groups.last()->translate(QVector3D(1.0, -0.9, 0.0));
+    initBarrel(-0.5, precision);
+    m_groups.last()->translate(QVector3D(0.0, 0.9, 0.0));
+    initBarrel(-0.5, precision);
+    m_groups.last()->translate(QVector3D(0.0, -2.9, 0.0));
+    m_groups.last()->rotate(QQuaternion::fromAxisAndAngle(0.0, 1.0, 0.0, 90));
     //m_timer.start(30, this);
 }
 
