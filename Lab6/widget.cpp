@@ -5,6 +5,7 @@ Widget::Widget(QWidget *parent)
 {
     m_camera = QSharedPointer<Camera3D>(new Camera3D());
     m_camera->translate(QVector3D(0.0f, 0.0f, -5.0f));
+    m_lightPosition = QVector4D(0.0, 0.0, 0.0, 1.0);
 }
 
 Widget::~Widget()

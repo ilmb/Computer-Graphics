@@ -74,6 +74,7 @@ private:
     float m_angleMain = 0.0f;
 
     QSharedPointer<Camera3D> m_camera;
+    QVector4D m_lightPosition;
 
 };
 
