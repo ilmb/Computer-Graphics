@@ -745,7 +745,7 @@ void Widget::initBarrel(double leftOffset, double delta)
     curvePoints += invertedPoints;
 
     m_groups.push_back(QSharedPointer<Group3D>(new Group3D()));
-
+                                                        // QVector3D(0, 1, 1)));
     for(int i = 0; i < curvePoints.size() - 1; i++)
     {
         double r1 = curvePoints[i].x();
@@ -762,6 +762,11 @@ void Widget::initBarrel(double leftOffset, double delta)
     double r = curvePoints.first().x() - 0.1;
     QVector3D center = QVector3D(0.0, 0.0, curvePoints.first().z() - 0.1);
     m_groups.last()->addObject(FigureBuilder::initDiskSector(QImage(":123.jpg"), center, r, 2 * M_PI, 0.1, false));
+    double round1 = r + 0.3;
+    double round2 = r + 0.31;
+    m_groups.last()->addObject(FigureBuilder::initDiskSector(QImage(":1.jpg"), QVector3D(0.0, 0.0, curvePoints.first().z() - 0.6), round2, 2 * M_PI, 0.1, false));
+    m_groups.last()->addObject(FigureBuilder::initDiskSector(QImage(":1.jpg"), QVector3D(0.0, 0.0, curvePoints.first().z() - 0.5), round1, 2 * M_PI, 0.1, false));
+    m_groups.last()->addObject(FigureBuilder::initCylinder(QVector3D(0.0, 0.0, curvePoints.first().z() - 0.6), QVector3D(0.0, 0.0, curvePoints.first().z() - 0.5), round2, round1, 0.1));
 
 
     double r1 = curvePoints.first().x();
@@ -774,10 +779,12 @@ void Widget::initBarrel(double leftOffset, double delta)
     QVector3D center2 = QVector3D(0.0, 0.0, curvePoints.first().z());
     m_groups.last()->addObject(FigureBuilder::initBelt(QImage(":2.jpg"), center1, center2, -r, -r));
 
-
     r = curvePoints.last().x() - 0.1;
     center = QVector3D(0.0, 0.0, curvePoints.last().z() + 0.1);
     m_groups.last()->addObject(FigureBuilder::initDiskSector(QImage(":123.jpg"), center, r, 2 * M_PI, 0.1, true));
+    m_groups.last()->addObject(FigureBuilder::initDiskSector(QImage(":1.jpg"), QVector3D(0.0, 0.0, curvePoints.last().z() + 0.6), round2, 2 * M_PI, 0.1, false));
+    m_groups.last()->addObject(FigureBuilder::initDiskSector(QImage(":1.jpg"), QVector3D(0.0, 0.0, curvePoints.last().z() + 0.5), round1, 2 * M_PI, 0.1, false));
+    m_groups.last()->addObject(FigureBuilder::initCylinder(QVector3D(0.0, 0.0, curvePoints.last().z() + 0.6), QVector3D(0.0, 0.0, curvePoints.last().z() + 0.5), round2, round1, 0.1));
 
     r1 = curvePoints.last().x();
     r2 = curvePoints.last().x() - 0.1;
@@ -788,7 +795,6 @@ void Widget::initBarrel(double leftOffset, double delta)
     center1 = QVector3D(0.0, 0.0, curvePoints.last().z() + 0.1);
     center2 = QVector3D(0.0, 0.0, curvePoints.last().z());
     m_groups.last()->addObject(FigureBuilder::initBelt(QImage(":2.jpg"), center1, center2, -r, -r));
-
 
     m_transformObjects.append(m_groups.last());
 }
