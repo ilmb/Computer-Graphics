@@ -761,7 +761,7 @@ void Widget::initBarrel(double leftOffset, double delta)
 
     double r = curvePoints.first().x() - 0.1;
     QVector3D center = QVector3D(0.0, 0.0, curvePoints.first().z() - 0.1);
-    m_groups.last()->addObject(FigureBuilder::initDiskSector(QImage(":2.jpg"), center, r, 2 * M_PI, 0.1, false));
+    m_groups.last()->addObject(FigureBuilder::initDiskSector(QImage(":123.jpg"), center, r, 2 * M_PI, 0.1, false));
 
 
     double r1 = curvePoints.first().x();
@@ -777,7 +777,7 @@ void Widget::initBarrel(double leftOffset, double delta)
 
     r = curvePoints.last().x() - 0.1;
     center = QVector3D(0.0, 0.0, curvePoints.last().z() + 0.1);
-    m_groups.last()->addObject(FigureBuilder::initDiskSector(QImage(":2.jpg"), center, r, 2 * M_PI, 0.1, true));
+    m_groups.last()->addObject(FigureBuilder::initDiskSector(QImage(":123.jpg"), center, r, 2 * M_PI, 0.1, true));
 
     r1 = curvePoints.last().x();
     r2 = curvePoints.last().x() - 0.1;
